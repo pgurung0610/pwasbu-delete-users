@@ -6,11 +6,22 @@ const admin = require("firebase-admin");
 const port = 3000;
 
 // Initializing Firebase Admin
-const serviceAccountKey = require("./serviceAccountKey.json");
 admin.initializeApp( {
-    credential: admin.credential.cert(serviceAccountKey),
+    credential: admin.credential.cert({
+        "type": process.env["PWASBU_USER_DELETION_TYPE"],
+        "project_id": process.env["PWASBU_USER_DELETION_PROJECT_ID"],
+        "private_key_id": process.env["PWASBU_USER_DELETION_PRIVATE_KEY_ID"],
+        "private_key": process.env["PWASBU_USER_DELETION_PRIVATE_KEY"],
+        "client_email": process.env["PWASBU_USER_DELETION_CLIENT_EMAIL"],
+        "client_id": process.env["PWASBU_USER_DELETION_CLIENT_ID"],
+        "auth_uri": process.env["PWASBU_USER_DELETION_AUTH_URI"],
+        "token_uri": process.env["PWASBU_USER_DELETION_TOKEN_URI"],
+        "auth_provider_x509_cert_url": process.env["PWASBU_USER_DELETION_AUTH_PROVIDER_X509_CERT_URL"],
+        "client_x509_cert_url": process.env["PWASBU_USER_DELETION_CLIENT_X509_CERT_URL"]
+    }),
     storageBucket: "pwasbu.appspot.com"
 });
+
 // Accessing Firebase services
 const auth = admin.auth();
 const db = admin.firestore();
@@ -86,6 +97,6 @@ app.get('/delete', (request, response) => {
 });
 
 // Prompts app to listen on port number defined earlier
-app.listen(process.env.PORT || port, () => {
+app.listen(process.envPORT || port, () => {
     console.log(`Listening on ${port}`);
 });

@@ -2,4 +2,4 @@
 Workaround for deleting users without using Firebase Cloud Functions
 
 
-To run this script successfully, make sure to first generate a service account key, name the resulting file serviceAccountKey.json, and put it in the same directory as index.js.
+This microservice is hosted on Heroku which is linked directly to the GitHub account associated with the VIP BEAR email (bme.innovation.chan@gmail.com) so any push to the master branch will be directly deployed onto Heroku. The service account credentials required to initialize Firebase Admin is read in from environment variables that were set using the Heroku dashboard.
