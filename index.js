@@ -97,6 +97,6 @@ app.get('/delete', (request, response) => {
 });
 
 // Prompts app to listen on port number defined earlier
-app.listen(process.envPORT || port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Listening on ${port}`);
 });
