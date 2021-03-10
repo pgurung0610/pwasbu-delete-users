@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "firebase-admin": "^9.4.2"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
